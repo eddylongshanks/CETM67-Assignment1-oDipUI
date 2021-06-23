@@ -20,8 +20,8 @@ class CustomerDetailsForm(forms.Form):
     town = forms.CharField(max_length=50, required=False, label="Town")
     county = forms.CharField(max_length=50, required=False, label="County")
     postcode = forms.CharField(max_length=10, required=False, label="Postcode")
-    telephone_number = forms.CharField(validators=[phone_regex], max_length=17, label="Telephone Number")
-    email_address = forms.EmailField(max_length=254, required=False, label="Email Address")
+    telephone_number = forms.CharField(validators=[phone_regex], max_length=17, label="Telephone Number", widget=forms.TextInput(attrs={'type': 'tel'}))
+    email_address = forms.EmailField(max_length=254, required=False, label="Email Address", widget=forms.TextInput(attrs={'type': 'email'}))
 
     MORNING = 'M'
     EARLY_AFTERNOON = 'EA'
@@ -52,9 +52,9 @@ class PropertyDetailsForm(forms.Form):
 
     ltv_value = forms.FloatField(max_value=100, min_value=0, label="LTV")
     
-    annual_income = forms.IntegerField(label="Annual Income")    
-    loan_amount = forms.IntegerField(label="Loan Amount")
-    property_value = forms.IntegerField(label="Property Value")
+    annual_income = forms.IntegerField(label="Annual Income", widget=forms.TextInput(attrs={'type': 'number'}))    
+    loan_amount = forms.IntegerField(label="Loan Amount", widget=forms.TextInput(attrs={'type': 'number'}))
+    property_value = forms.IntegerField(label="Property Value", widget=forms.TextInput(attrs={'type': 'number'}))
 
     NEW_HOUSE = 'NH'
     REMORTGAGE = 'RM'

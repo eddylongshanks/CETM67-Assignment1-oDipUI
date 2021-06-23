@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-80jbd7c(q6f*s!x@)=dpkyu9l6dq*o)il+c!-qb$rswqn=7qz!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['ec2-18-133-188-103.eu-west-2.compute.amazonaws.com', '18.133.188.103', 'localhost']
+ALLOWED_HOSTS = ['ec2-18-133-188-103.eu-west-2.compute.amazonaws.com', '18.133.188.103', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'oDipUI.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 # Password validation

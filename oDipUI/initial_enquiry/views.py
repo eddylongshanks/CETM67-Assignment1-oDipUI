@@ -90,7 +90,10 @@ def calculate_ltv(request):
 
     # Map the response data to usable values
     ltv_data = response.json()
-    ltv_value = ltv_data['body']['ltv_percentage']
+    ltv_float_value = ltv_data['body']['ltv_percentage']
+
+    # Convert float to integer
+    ltv_value = int(ltv_float_value)
     ltv_acceptable = ltv_data['body']['is_acceptable']
 
     # Check if the value is within specified acceptance criteria

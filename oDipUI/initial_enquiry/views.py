@@ -55,10 +55,12 @@ def property_details(request):
             enquiry_data = EnquiryProvider()
             enquiry_data.add(property_details_data)
             enquiry_data.add(customer_details_data)
-            completed_data = enquiry_data.get_list()
+
+            # Convert all values to string before sending to API
+            string_data = enquiry_data.get_list_with_string_values()
 
             # Post the data to the API
-            response = post(ODIP_API_ENDPOINT, json = completed_data)
+            response = post(ODIP_API_ENDPOINT, json = string_data)
 
             print(response.text)
 
@@ -90,10 +92,7 @@ def calculate_ltv(request):
 
     # Map the response data to usable values
     ltv_data = response.json()
-    ltv_float_value = ltv_data['body']['ltv_percentage']
-
-    # Convert float to integer
-    ltv_value = int(ltv_float_value)
+    ltv_value = ltv_data['body']['ltv_percentage']
     ltv_acceptable = ltv_data['body']['is_acceptable']
 
     # Check if the value is within specified acceptance criteria

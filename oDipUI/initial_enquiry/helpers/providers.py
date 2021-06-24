@@ -18,6 +18,14 @@ class EnquiryProvider:
         """ Return the list as a dictionary object """
 
         return self.data
+    
+    def get_list_with_string_values(self):
+        """ Return the list as a dictionary object with string values"""
+        working_list = self.data.items()
+
+        list_with_string_values =  {str(key): str(value) for key, value in working_list}
+
+        return list_with_string_values
 
     def __str__(self):
         return str(self.data)

@@ -50,8 +50,7 @@ class CustomerDetailsForm(forms.Form):
 class PropertyDetailsForm(forms.Form):
     """ Page 2 of the Initial Enquiry journey """
 
-    ltv_value = forms.IntegerField(max_value=100, min_value=0, label="LTV")
-    
+    ltv_value = forms.FloatField(max_value=100, min_value=0, label="LTV")
     annual_income = forms.IntegerField(label="Annual Income", widget=forms.TextInput(attrs={'type': 'number'}))    
     loan_amount = forms.IntegerField(label="Loan Amount", widget=forms.TextInput(attrs={'type': 'number'}))
     property_value = forms.IntegerField(label="Property Value", widget=forms.TextInput(attrs={'type': 'number'}))
